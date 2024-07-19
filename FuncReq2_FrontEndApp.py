@@ -134,7 +134,7 @@ def getCustomerDetailsByPhone():
     input_phone = h.formatPhoneNumber(input_phone)
     return h.getData(q.customerDetails, (h.formatPhoneNumber(input_phone),))
     
-# 2.2.1 Get the existing account details of a customer. TODO confirm requirement, display customer details or display True / false
+# 2.2.1 Get the existing account details of a customer.
 def getCustomerDetails():
 
     customerDetails = getCustomerDetailsByPhone()
@@ -168,14 +168,14 @@ def modifyCustomerDetails():
                     updatedColumns = {}
                     break
                 if choice == '11': # Save
-                    h.updateCustomerDetails(customerRec[10], updatedColumns)
+                    h.saveCustomerDetails(customerRec[10], updatedColumns)
                     customerDetails = h.getData(q.customerDetailsBySSN, (customerRec[10],))
                     displayCustomerDetails(customerDetails)
                     break
                 elif choice in editOptions:
                     print()
                     option = editOptions.get(choice)
-                    option[2](customerRec[10], option[0], option[1], option[3], updatedColumns)
+                    updateCustomerDetail(customerRec[10], option[0], option[1], option[3], updatedColumns)
                 else:
                     print(f"{'Invalid Entry':>150}")
 

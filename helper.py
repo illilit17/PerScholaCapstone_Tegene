@@ -37,8 +37,8 @@ def getInputMonthAndYear():
 
     input_month = input_month if len(input_month) == 2 else '0'+input_month 
 
-    input_year = input(f"""{"Year (XXXX - ex: '2024')":60}""") 
-    # validate 
+    input_year = input(f"""{"Year (XXXX - ex: '2024')":<60}""") 
+    # validate S
     while True:
         if input_year.isdigit() and len(input_year) == 4: 
             break
@@ -116,7 +116,7 @@ def updateCustomerDetail(ssn, field, value):
 
     return True
 
-def updateCustomerDetails(ssn, data):
+def saveCustomerDetails(ssn, data):
 
     # ➢ Establish a connection to the DB
     connection = mysql.connector.connect(database='creditcard_capstone', user=my_secrets.mysql_username, password=my_secrets.mysql_password)
